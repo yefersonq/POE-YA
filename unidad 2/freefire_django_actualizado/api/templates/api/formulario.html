@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Atributos</title>
+</head>
+<body>
+    <h1>Agregar Atributos de Personaje</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre:</label><input type="text" name="nombre"><br><br>
+        <label>Vida:</label><input type="text" name="vida"><br><br>
+        <label>Balas:</label><input type="text" name="balas"><br><br>
+        <label>Nivel:</label><input type="text" name="nivel"><br><br>
+        <label>Velocidad:</label><input type="text" name="velocidad"><br><br>
+        <label>Poder:</label><input type="text" name="poder"><br><br>
+        <button type="submit">Guardar</button>
+    </form>
+
+    {% if mensaje %}
+        <p style="color:green;">{{ mensaje }}</p>
+    {% endif %}
+
+    <h2>Atributos Guardados:</h2>
+    <ul>
+    {% for atributo in atributos %}
+        <li><strong>{{ atributo.nombre }}</strong>: {{ atributo.valor }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
